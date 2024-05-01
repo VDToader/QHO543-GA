@@ -4,7 +4,6 @@
  */
 
 package com.mycompany.fitnesstracker;
-import java.util.Scanner;
 /**
  *
  * @author BlackBox
@@ -33,6 +32,7 @@ public class FitnessTracker {
           
         System.out.println("***** Welcome to the new Fitness Tracker *****");
         
+        
         // TESTER FOR MAIN MENU
         Menu mainMenu = new Menu();
         int choice = 0;
@@ -40,30 +40,32 @@ public class FitnessTracker {
             mainMenu.displayMenu();
             System.out.print("Your choice: ");
             choice = mainMenu.getUserChoice();
-        
-        
+   
             switch (choice) {
-                case 1:
-                    System.out.println("You've chosen View available exercises");
+                    case 1:
+                        System.out.println("You've chosen View available exercises");
 
-                    break;
-                    
-                case 2:
-                    System.out.println("You've chosen Record a workout session");
+                        break;
 
-                    break;
-                    
-                case 3:
-                    System.out.println("You've chosen View your favourite exercises");
+                    case 2:
+                        System.out.println("You've chosen Record a workout session");
 
-                    break;
-                    
-                case 4:
-                    System.out.println("This program will be terminated. Thank you!");
-                    break;
-            }
-        }
-        
+                        break;
 
+                    case 3:
+                        System.out.println("You've chosen View your favourite exercises");
+
+                        break;
+
+                    case 4:
+                        System.out.println("This program will be terminated. Thank you!");
+                        break;
+
+                    // Wrong choice chosen condition
+                    default:
+                        System.out.println("You selected an invalid option. Try again!");
+                        break;
+                            }
+                        } 
     }
 }

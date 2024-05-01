@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.fitnesstracker;
-
 /**
  *
  * @author BlackBox
@@ -11,17 +10,18 @@ package com.mycompany.fitnesstracker;
 public class User {
     private String name;
     private String email;
-    private boolean isAdmin = false;
-    
+    private boolean isAdmin;
+
+    // USER CLASS CONSTRUCTOR
     public User (String name, String email, boolean isAdmin){
         this.name = name;
         this.email = email;
-        this.isAdmin = isAdmin;
+        this.isAdmin = false;
     }
     
     // GETTERS
     public String getName(){
-        return name;
+        return name;   
     }
     public String getEmail(){
         return email;
@@ -41,4 +41,7 @@ public class User {
         this.isAdmin = isAdmin;
     }
     
+
 }
+    
+

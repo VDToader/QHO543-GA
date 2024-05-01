@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 // Menu class declaration for printing the main menu, getting the user choice via input + SubMenu choice 
 public class Menu {
-    private Scanner scanner;
+    public Scanner scanner;
     
-    // Menu Constructor
+    // Menu scanner Constructor
     public Menu() {
         this.scanner = new Scanner(System.in);
     }
