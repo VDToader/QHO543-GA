@@ -10,5 +10,20 @@ package com.mycompany.fitnesstracker;
  * @author BlackBox
  */
 public class Reps {
+    private int repsQuantity;
     
+    //Building the constructor
+    public Reps(int repsQuantity) {
+        this.repsQuantity = repsQuantity;
+    }
+    
+    // Getter method
+    public int getRepsQuantity (){
+        return repsQuantity;
+    }
+    
+    //Setter method
+    public void setRepsQuantity(int repsQuantity){
+        this.repsQuantity = repsQuantity;
+    }
 }
