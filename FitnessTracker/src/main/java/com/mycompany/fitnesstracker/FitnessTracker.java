@@ -31,7 +31,39 @@ public class FitnessTracker {
 //        System.out.println("If the Exercise class is working a type of exercise will be printed with the total burned Kcal and taken time");
 //        System.out.println("You selected the following exercise: " + exeName + " " + exeKcal + " are being burned in " + exeTime + " seconds");
           
+        System.out.println("***** Welcome to the new Fitness Tracker *****");
+        
+        // TESTER FOR MAIN MENU
+        Menu mainMenu = new Menu();
+        int choice = 0;
+        while (choice != 4){
+            mainMenu.displayMenu();
+            System.out.print("Your choice: ");
+            choice = mainMenu.getUserChoice();
+        
+        
+            switch (choice) {
+                case 1:
+                    System.out.println("You've chosen View available exercises");
 
-           
+                    break;
+                    
+                case 2:
+                    System.out.println("You've chosen Record a workout session");
+
+                    break;
+                    
+                case 3:
+                    System.out.println("You've chosen View your favourite exercises");
+
+                    break;
+                    
+                case 4:
+                    System.out.println("This program will be terminated. Thank you!");
+                    break;
+            }
+        }
+        
+
     }
 }
