@@ -12,6 +12,10 @@ package com.mycompany.fitnesstracker;
 public class FitnessTracker {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Hello World!" );
+        Sets five = new Sets(5);
+        int value = five.getSetsQuantity();
+        System.out.println(value);
+        
     }
 }
