@@ -10,35 +10,28 @@ package com.mycompany.fitnesstracker;
  */
 public class Exercise {
     private String name;
+    private int duration;
     private int burnedKcal;
-    private int time;
-    
-    //Constructor
-    public Exercise (String name, int burnedKcal, int time){
+    private String description;
+   
+    public Exercise (String name, int duration, int burnedKcal, String description){
         this.name = name;
+        this.duration = duration;
         this.burnedKcal = burnedKcal;
-        this.time = time;
+        this.description = description;
     }
-    
-    //Getter methods for all three attributes
-    public String getName(){
+    // Declaring Accessors(Getters) for the Exercise Class
+    public String getName (){
         return name;
     }
-    public int getburnedKcal(){
+    public int getDuration (){
+        return duration;
+    }
+    public int getBurnedKcal () {
         return burnedKcal;
     }
-    public int getTime(){
-        return time;
+    public String description () {
+        return description;
     }
     
-    //Setter methods for the same attributes
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setburnedKcal(int burnedKcal){
-        this.burnedKcal = burnedKcal;
-    }
-    public void setTime (int time){
-        this.time = time;
-    }
 }
