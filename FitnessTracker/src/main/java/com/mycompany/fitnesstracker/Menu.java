@@ -32,7 +32,7 @@ public class Menu {
         scanner.nextLine();
         return choice;
     }
-    
+
     
     
 }
