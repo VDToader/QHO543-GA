@@ -60,17 +60,21 @@ public class FitnessTracker {
                         exercises.add(new Exercise(10,"Burpee", 5, 2, "The burpee, a squat thrust with an additional stand between repetitions, is a full body exercise used in strength training."));
                         // Display all existing exercises
                         Exercise.displayAllExercises(exercises);
-                        
-                        //  Ask the user if he wants to add an exercise or more to the favourite list.
-                        System.out.println("Would you like to add an exercise to your favourite list? (1 for YES or 0 for NO) ");
-                        mainMenu.getUserChoice();
-                        if (choice == 1){
-                            System.out.println("Which exercise would you like to add? (Enter the option number)");
-                            // Add the chosen element with the specific ID to the favourite list
-                            System.out.println("This exercise will be added to the favourite list: ");
-                            mainMenu.getUserChoice();
+                        // Close the scanner after the first option to be used again for Y/N input
+                        mainMenu.closeScanner();
+                        mainMenu.getUserInput();
+                        // Asks the user if he wants to add a FAVORITE EXERCISE
+                        System.out.println("Would you like to add one of the previous exercises to your favorite list? (type Yes or No)");
+                        String userInput = mainMenu.getUserInput();
+                        // Conditional statement to add an exercise or not // Use Equals method to compare the memory address of the object
+                        if ("Yes".equals(userInput) && "yes".equals(userInput)){
+                            System.out.println("Which exercise would you like to add? (From 1 to 10)");
                         }
-                        else
+                        else if ("No".equals(userInput) && "no".equals(userInput)){
+                            System.out.println("No exercise will be added to your favorite list!");
+                        }
+                        else 
+                            System.out.println("ERROR");
                         break;
 
                     case 2:
