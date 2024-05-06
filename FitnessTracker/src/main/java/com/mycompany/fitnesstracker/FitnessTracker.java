@@ -60,8 +60,9 @@ public class FitnessTracker {
                         exercises.add(new Exercise(10,"Burpee", 5, 2, "The burpee, a squat thrust with an additional stand between repetitions, is a full body exercise used in strength training."));
                         // Display all existing exercises
                         Exercise.displayAllExercises(exercises);
-                        // Close the scanner after the first option to be used again for Y/N input
+                        // Close the first integer scanner!  ( TO BE CONTINUED---ERROR)
                         mainMenu.closeScanner();
+                        // START A NEW SCANNER FOR YES/NO INPUT!   (TO BE CONTINUED---ERROR)
                         mainMenu.getUserInput();
                         // Asks the user if he wants to add a FAVORITE EXERCISE
                         System.out.println("Would you like to add one of the previous exercises to your favorite list? (type Yes or No)");
