@@ -32,7 +32,15 @@ public class Menu {
         scanner.nextLine();
         return choice;
     }
+    
+    public String getUserInput(){
+        String input = scanner.nextLine();
+        scanner.nextLine();
+        return input;
+    }
+    
+    public void closeScanner(){
+        scanner.close();
+    }
 
-    
-    
 }
