@@ -9,14 +9,14 @@ package com.mycompany.fitnesstracker;
  * @author BlackBox
  */
 import java.util.List;
-import java.util.ArrayList;
+
 
 public class Exercise {
-    private int id;
-    private String name;
-    private int duration;
-    private int burnedKcal;
-    private String description;
+    private final int id;
+    private final String name;
+    private final int duration;
+    private final int burnedKcal;
+    private final String description;
    
     public Exercise (int id, String name, int duration, int burnedKcal, String description){
         this.id = id;
