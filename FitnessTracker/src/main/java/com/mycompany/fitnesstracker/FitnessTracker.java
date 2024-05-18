@@ -17,13 +17,15 @@ public class FitnessTracker {
     public static void main(String[] args) {
         System.out.println("***** Welcome to the new Fitness Tracker *****");
         // TESTER FOR MAIN MENU
-        Menu mainMenu = new Menu();
         int choice = 0;
         boolean validOption = false;
         Scanner scannerInt = new Scanner(System.in);
         OUTER:
         while (!validOption) {
-            mainMenu.displayMenu();
+            System.out.println("1. View available exercises ");
+            System.out.println("2. Record a Workout session ");
+            System.out.println("3. View your favourite exercises ");
+            System.out.println("4. Exit");
             System.out.print("Your choice: ");
             
             // Input Error catcher, just in case the user enters another type of input rather than int
