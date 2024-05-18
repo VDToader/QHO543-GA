@@ -21,6 +21,8 @@ public class FitnessTracker {
         int selectedExercise = 0;
         var answer = "default";
         boolean validOption = false;
+        // Initialize an empty array list to hold the favourite exercises
+        List<Exercise> favoriteExercises = new ArrayList<>();
         Scanner scannerInt = new Scanner(System.in);
         Scanner scannerAnsw = new Scanner(System.in);
         OUTER: //Checkpoint for the primary menu
@@ -47,10 +49,10 @@ public class FitnessTracker {
                     exercises.add(new Exercise(1,"Lunge", 30, 10, "Like squats, lunges work all the major muscles of the lower body: gluteals, quadriceps, and hamstrings"));
                     exercises.add(new Exercise(2,"Plank", 45, 15, "Forearm plank. A full-body exercise that requires strength and balance, planks put the core into overdrive."));
                     exercises.add(new Exercise(3,"Squat", 30, 20, "Squats increase lower body and core strength, as well as flexibility in your lower back and hips."));
-                    exercises.add(new Exercise(4,"Dumbbell row", 5, 2, "Dumbbell rows. Not only will these make your back look killer in that dress, but dumbbell rows are also another compound exercise that strengthens multiple muscle groups"));
-                    exercises.add(new Exercise(5,"Pushup", 5, 2, "Adding a pushup to your pike will target those shoulders even more. "));
+                    exercises.add(new Exercise(4,"Dumbbell row", 5, 2, "Not only will these make your back look killer in that dress, but dumbbell rows are also another compound exercise that strengthens multiple muscle groups"));
+                    exercises.add(new Exercise(5,"Pushup", 5, 2, "Simple, but a deadly pushup. "));
                     exercises.add(new Exercise(6,"Crunche", 10, 4, "Crunches work the ab muscles; [they're] not to be mistaken as exercise that burns the fat over the abdominals."));
-                    exercises.add(new Exercise(7,"Deadlift", 10, 3, " Deadlift. The bread and butter of countless gym routines, this move, if done properly, will predominantly engage your back and legs."));
+                    exercises.add(new Exercise(7,"Deadlift", 10, 3, "The bread and butter of countless gym routines, this move, if done properly, will predominantly engage your back and legs."));
                     exercises.add(new Exercise(8,"Lateral raise", 10, 2, "This move is similar to regular lateral raises, except here you raise the weights while slightly bent over, leading to more rear deltoid and trap development."));
                     exercises.add(new Exercise(9,"Bridge", 10, 2, " Activate your core and posterior chain (a fancy term for the backside of your body) with a bridge."));
                     // Display all existing exercises
@@ -64,11 +66,12 @@ public class FitnessTracker {
                         System.out.println("Answer only with yes/no ");
                     }
                        
-                    // Initialize an empty array list to hold the favourite exercises
-                    List<Exercise> favoriteExercises = new ArrayList<>();
+
                     
                     // Conditional loop if the user wants to add an exercise to the favourite list
+                    INNER:
                     while (answer.equals("yes")) {
+
                         System.out.println("Whitch of the previous exercise would you like to add? (Select from 1 to 9)");
                         // Input Error catcher
                         try{
@@ -84,23 +87,40 @@ public class FitnessTracker {
                             favoriteExercises.add(selected);
                             System.out.println("Succesfull operation! One " + selected.getName() + " has been added to the favourite list.");
                             // AFTER THE EXERCISE HAS BEEN ADDED, THE USER WILL BE REDIRECTED INSIDE THE MAIN MENU
-                            continue OUTER;
-                        }
-                        else {
-                            System.out.println("Please select an available option!");
+                            System.out.println("Would you like to add another exercise? (yes or no)");
+                            answer = scannerAnsw.nextLine().toLowerCase();
+                            if (answer.equals("yes")){
+                                continue INNER;
+                            }
+                            else if (answer.equals("no")){
+                                continue OUTER;
+                            }
+                            else {
+                                System.out.println("This is an invalid option. Please try again");
+                            }
 
                         }
+
                     }
+                    if (answer.equals("no")){
+                    continue OUTER;
+                    }
+                    else{
+                        System.out.println("You inserted an invalid option. Try Again");
+                        continue OUTER;
+                    }
+
                     
                        
                     
-                    validOption = true;
+                    /*                    validOption = true;*/
                 case 2:
                     System.out.println("You've chosen Record a workout session");
                     validOption = true;
                     break OUTER;
                 case 3:
                     System.out.println("You've chosen View your favourite exercises");
+                    Exercise.displayFavExercises(favoriteExercises);
                     validOption = true;
                     break OUTER;
                 case 4:

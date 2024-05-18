@@ -46,6 +46,12 @@ public class Exercise {
         for (Exercise exercise : exercises) {
             System.out.println("Option "+exercise.getId()+ "------ Name: " +exercise.getName() + "| Duration: " + exercise.getDuration() + " seconds" + "| Burned Kcal: " + exercise.getBurnedKcal() + " Kcal " + " | Description: " + exercise.getDescription());
         }
- 
+    
+    }
+    public static void displayFavExercises(List<Exercise> favoriteExercise){
+        for (Exercise exercise : favoriteExercise) {
+            System.out.println("Your favorite exercises are: ");
+            System.out.println("Name: "+ exercise.getName() + " " + exercise.getDescription());
+        }
     }
 }
