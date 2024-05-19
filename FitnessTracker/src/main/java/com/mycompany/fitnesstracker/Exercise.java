@@ -50,7 +50,6 @@ public class Exercise {
     }
     public static void displayFavExercises(List<Exercise> favoriteExercise){
         for (Exercise exercise : favoriteExercise) {
-            System.out.println("Your favorite exercises are: ");
             System.out.println("Name: "+ exercise.getName() + " " + exercise.getDescription());
         }
     }
