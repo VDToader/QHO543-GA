@@ -11,19 +11,25 @@ package com.mycompany.fitnesstracker;
  */
 public class Sets {
     private int setsQuantity;
+    private int repsQuantity;
+    
     
     //Building the constructor
-    public Sets(int setsQuantity) {
+    public Sets(int setsQuantity, int repsQuantity) {
         this.setsQuantity = setsQuantity;
+        this.repsQuantity = repsQuantity;
     }
     
-    // Getter method
+    // Getter methods
     public int getSetsQuantity (){
         return setsQuantity;
     }
+    public int getRepsQuantity (){
+        return repsQuantity;
+    }
     
-    //Setter method
-    public void setSetsQuantity(int setsQuantity){
-        this.setsQuantity = setsQuantity;
+    @Override
+    public String toString(){
+        return "Set{" + "setNumber = " + setsQuantity + ", reps = " + repsQuantity + "}";
     }
 }

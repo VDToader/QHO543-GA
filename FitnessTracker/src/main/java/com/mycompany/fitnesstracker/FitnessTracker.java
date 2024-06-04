@@ -39,6 +39,7 @@ public class FitnessTracker {
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number!");
                 scannerInt.nextLine();  //Clear the input buffer in case of an error
+                continue;
             }
             
             switch (choice) {
@@ -62,8 +63,9 @@ public class FitnessTracker {
                     // Input error catcher, in case the user inserts another word rather than yes or no
                     try{
                     answer = scannerAnsw.nextLine().toLowerCase();
-                    } catch(InputMismatchException e) {
+                    } catch(IndexOutOfBoundsException e) {
                         System.out.println("Answer only with yes/no ");
+
                     }
                        
 
@@ -110,14 +112,38 @@ public class FitnessTracker {
                         continue OUTER;
                     }
 
-                    
-                       
-                    
-                    /*                    validOption = true;*/
                 case 2:
                     System.out.println("You've chosen Record a workout session");
-                    validOption = true;
-                    break OUTER;
+                    Workout session = new Workout();
+                    Scanner scanner = new Scanner(System.in);
+                    boolean valid = true;
+                    //Loop to help the user adding multiple sets for a certain workout
+                    while (valid){
+                        System.out.println("1. Add a new set");
+                        System.out.println("2. View workout summary");
+                        System.out.println("3. Exit");
+                        System.out.print("Your choice: ");
+                        
+                        int option = scanner.nextInt();
+                        
+                        switch (option){
+                            case 1:
+                                Workout.createExerciseArray();
+                                System.out.println("Which exercise would you like to add? ");
+                                System.out.println("Your choice: ");
+                                int addedExercise = scanner.nextInt();
+                                
+                                
+                                
+                                
+                                
+                                break;
+                            case 2:
+                                valid = false;
+                                break;
+                        }
+                    }
+                    continue OUTER;
                 case 3:
                     System.out.println("You've chosen View your favourite exercises");
                     Exercise.displayFavExercises(favoriteExercises);
