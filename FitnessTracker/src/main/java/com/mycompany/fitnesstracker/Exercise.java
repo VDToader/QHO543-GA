@@ -41,6 +41,8 @@ public class Exercise {
     public String getDescription(){
         return description;
     }
+    
+    
     public static void displayAllExercises(List<Exercise> exercises) {
         System.out.println("Existing Exercises:");
         for (Exercise exercise : exercises) {
@@ -53,4 +55,7 @@ public class Exercise {
             System.out.println("Name: "+ exercise.getName() + " " + exercise.getDescription());
         }
     }
-}
+    
+   
+    
+ }
