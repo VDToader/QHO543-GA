@@ -9,6 +9,7 @@ package com.mycompany.fitnesstracker;
  *
  * @author BlackBox
  */
+
 public class Sets {
     private int setsQuantity;
     private int repsQuantity;
@@ -27,7 +28,7 @@ public class Sets {
     public int getRepsQuantity (){
         return repsQuantity;
     }
-    
+
     @Override
     public String toString(){
         return "Set{" + "setNumber = " + setsQuantity + ", reps = " + repsQuantity + "}";

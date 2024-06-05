@@ -4,146 +4,132 @@
  */
 
 package com.mycompany.fitnesstracker;
-/**
- *
- * @author BlackBox
- */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.InputMismatchException;
+
 public class FitnessTracker {
 
     public static void main(String[] args) {
         System.out.println("***** Welcome to the new Fitness Tracker *****");
-        // TESTER FOR MAIN MENU
+
         int choice = 0;
         int selectedExercise = 0;
         var answer = "default";
         boolean validOption = false;
-        // Initialize an empty array list to hold the favourite exercises
+
         List<Exercise> favoriteExercises = new ArrayList<>();
+        Workout workout = new Workout(); // Initialize the workout instance
+
         Scanner scannerInt = new Scanner(System.in);
         Scanner scannerAnsw = new Scanner(System.in);
-        OUTER: //Checkpoint for the primary menu
+
+        OUTER: // Checkpoint for the primary menu
         while (!validOption) {
-            System.out.println("1. View available exercises ");
-            System.out.println("2. Record a Workout session ");
-            System.out.println("3. View your favourite exercises ");
+            System.out.println("1. View available exercises");
+            System.out.println("2. Record a Workout session");
+            System.out.println("3. View your favourite exercises");
             System.out.println("4. Exit");
             System.out.print("Your choice: ");
-            
+
             // Input Error catcher, just in case the user enters another type of input rather than int
-            try{
+            try {
                 choice = scannerInt.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number!");
-                scannerInt.nextLine();  //Clear the input buffer in case of an error
+                scannerInt.nextLine();  // Clear the input buffer in case of an error
                 continue;
             }
-            
+
             switch (choice) {
                 case 1:
                     System.out.println("You've chosen View available exercises");
-                    List<Exercise> exercises = new ArrayList<>();
-                    // Create 10 new objects of the Class Exercise and display the array list containing them
-                    exercises.add(new Exercise(1,"Lunge", 30, 10, "Like squats, lunges work all the major muscles of the lower body: gluteals, quadriceps, and hamstrings"));
-                    exercises.add(new Exercise(2,"Plank", 45, 15, "Forearm plank. A full-body exercise that requires strength and balance, planks put the core into overdrive."));
-                    exercises.add(new Exercise(3,"Squat", 30, 20, "Squats increase lower body and core strength, as well as flexibility in your lower back and hips."));
-                    exercises.add(new Exercise(4,"Dumbbell row", 5, 2, "Not only will these make your back look killer in that dress, but dumbbell rows are also another compound exercise that strengthens multiple muscle groups"));
-                    exercises.add(new Exercise(5,"Pushup", 5, 2, "Simple, but a deadly pushup. "));
-                    exercises.add(new Exercise(6,"Crunche", 10, 4, "Crunches work the ab muscles; [they're] not to be mistaken as exercise that burns the fat over the abdominals."));
-                    exercises.add(new Exercise(7,"Deadlift", 10, 3, "The bread and butter of countless gym routines, this move, if done properly, will predominantly engage your back and legs."));
-                    exercises.add(new Exercise(8,"Lateral raise", 10, 2, "This move is similar to regular lateral raises, except here you raise the weights while slightly bent over, leading to more rear deltoid and trap development."));
-                    exercises.add(new Exercise(9,"Bridge", 10, 2, " Activate your core and posterior chain (a fancy term for the backside of your body) with a bridge."));
+                    List<Exercise> exercises = workout.getExercises(); // Use exercises from workout
+
                     // Display all existing exercises
                     Exercise.displayAllExercises(exercises);
+
                     // Check if the user wants to add an exercise to his favourite exercises list.
                     System.out.println("Would you like to add one of the previous exercises to your favourite list? (yes or no)");
                     // Input error catcher, in case the user inserts another word rather than yes or no
-                    try{
-                    answer = scannerAnsw.nextLine().toLowerCase();
-                    } catch(IndexOutOfBoundsException e) {
+                    try {
+                        answer = scannerAnsw.nextLine().toLowerCase();
+                    } catch (IndexOutOfBoundsException e) {
                         System.out.println("Answer only with yes/no ");
-
                     }
-                       
 
-                    
                     // Conditional loop if the user wants to add an exercise to the favourite list
                     INNER:
                     while (answer.equals("yes")) {
-
-                        System.out.println("Whitch of the previous exercise would you like to add? (Select from 1 to 9)");
+                        System.out.println("Which of the previous exercises would you like to add? (Select from 1 to 9)");
                         // Input Error catcher
-                        try{
+                        try {
                             selectedExercise = scannerInt.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid input. Please enter a number");
+                            scannerInt.nextLine();
                         }
-                        catch (InputMismatchException e) {
-                        System.out.println("Invalid input. Please enter a number");
-                        scannerInt.nextLine();
-                        } 
-                        
-                        if (selectedExercise <= 9 ) {
+
+                        if (selectedExercise <= 9) {
                             Exercise selected = exercises.get(selectedExercise - 1); // Retract 1 to obtain the correct index
                             favoriteExercises.add(selected);
-                            System.out.println("Succesfull operation! One " + selected.getName() + " has been added to the favourite list.");
+                            System.out.println("Successful operation! One " + selected.getName() + " has been added to the favourite list.");
                             // AFTER THE EXERCISE HAS BEEN ADDED, THE USER WILL BE REDIRECTED INSIDE THE MAIN MENU
                             System.out.println("Would you like to add another exercise? (yes or no)");
                             answer = scannerAnsw.nextLine().toLowerCase();
-                            if (answer.equals("yes")){
+                            if (answer.equals("yes")) {
                                 continue INNER;
-                            }
-                            else if (answer.equals("no")){
+                            } else if (answer.equals("no")) {
                                 continue OUTER;
-                            }
-                            else {
+                            } else {
                                 System.out.println("This is an invalid option. Please try again");
                             }
-
                         }
-
                     }
-                    if (answer.equals("no")){
-                    continue OUTER;
-                    }
-                    else{
+                    if (answer.equals("no")) {
+                        continue OUTER;
+                    } else {
                         System.out.println("You inserted an invalid option. Try Again");
                         continue OUTER;
                     }
 
                 case 2:
                     System.out.println("You've chosen Record a workout session");
-                    Workout session = new Workout();
                     Scanner scanner = new Scanner(System.in);
                     boolean valid = true;
-                    //Loop to help the user adding multiple sets for a certain workout
-                    while (valid){
-                        System.out.println("1. Add a new set");
-                        System.out.println("2. View workout summary");
-                        System.out.println("3. Exit");
+
+                    // Loop to help the user adding multiple sets for a certain workout
+                    SMALLINNER:
+                    while (valid) {
+                        System.out.println("1. View available exercises");
+                        System.out.println("2. Register workout session");
+                        System.out.println("3. View workout History");
+                        System.out.println("4.Go back to the previous menu");
                         System.out.print("Your choice: ");
-                        
+
                         int option = scanner.nextInt();
-                        
-                        switch (option){
+
+                        switch (option) {
                             case 1:
-                                Workout.createExerciseArray();
-                                System.out.println("Which exercise would you like to add? ");
-                                System.out.println("Your choice: ");
-                                int addedExercise = scanner.nextInt();
-                                
-                                
-                                
-                                
-                                
-                                break;
+                                displayExercises(workout);
+                                continue SMALLINNER;
                             case 2:
+                                addExerciseToWorkout(workout, scanner);
+                                continue SMALLINNER;
+                            case 3:
+                                workout.displayWorkout();
+                                continue SMALLINNER;
+                            case 4:
                                 valid = false;
-                                break;
+                                continue OUTER;
+                            default:
+                                System.out.println("You entered an invalid option.");
                         }
                     }
-                    continue OUTER;
+                    break;
+
                 case 3:
                     System.out.println("You've chosen View your favourite exercises");
                     Exercise.displayFavExercises(favoriteExercises);
@@ -156,8 +142,39 @@ public class FitnessTracker {
                 default:
                     System.out.println("Invalid option. Please try again!");
             }
-        } 
+        }
     }
 
+    private static void displayExercises(Workout workout) {
+        System.out.println("Available Exercises: ");
+        for (Exercise exercise : workout.getExercises()) {
+            System.out.println("Exercise: " + exercise.getId() + " - " + exercise.getName());
+        }
+    }
 
+    private static void addExerciseToWorkout(Workout workout, Scanner scanner) {
+        displayExercises(workout);
+        System.out.print("Select an exercise: ");
+        int exerciseId = scanner.nextInt();
+
+        Exercise selectedExercise = null;
+        for (Exercise exercise : workout.getExercises()) {
+            if (exercise.getId() == exerciseId) {
+                selectedExercise = exercise;
+                break;
+            }
+        }
+
+        if (selectedExercise != null) {
+            System.out.print("Enter the number of sets: ");
+            int sets = scanner.nextInt();
+            System.out.print("Enter the number of reps: ");
+            int reps = scanner.nextInt();
+
+            workout.addWorkoutEntry(new WorkoutEntry(selectedExercise, sets, reps));
+            System.out.println("Exercise added successfully!");
+        } else {
+            System.out.println("Invalid Entry!");
+        }
+    }
 }
