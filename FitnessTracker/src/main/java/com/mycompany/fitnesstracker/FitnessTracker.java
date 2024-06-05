@@ -14,7 +14,7 @@ public class FitnessTracker {
 
     public static void main(String[] args) {
         System.out.println("***** Welcome to the new Fitness Tracker *****");
-
+        // Default values to be used inside inner and outer loop inside the main menu
         int choice = 0;
         int selectedExercise = 0;
         var answer = "default";
@@ -42,6 +42,7 @@ public class FitnessTracker {
                 scannerInt.nextLine();  // Clear the input buffer in case of an error
                 continue;
             }
+            System.out.println("--------------------");
 
             switch (choice) {
                 case 1:
@@ -110,6 +111,7 @@ public class FitnessTracker {
                         System.out.print("Your choice: ");
 
                         int option = scanner.nextInt();
+                        System.out.println("--------------------");
 
                         switch (option) {
                             case 1:
@@ -117,7 +119,15 @@ public class FitnessTracker {
                                 continue SMALLINNER;
                             case 2:
                                 addExerciseToWorkout(workout, scanner);
-                                continue SMALLINNER;
+                                System.out.println("Would you like to add another exercise ? (Yes or No)");
+                                String case2_choice = scanner.nextLine();
+                                
+                                //Loop to add more exercises
+                                while (case2_choice.toLowerCase().equals("yes")) {
+                                addExerciseToWorkout(workout, scanner);    
+                                
+                                }
+
                             case 3:
                                 workout.displayWorkout();
                                 continue SMALLINNER;
@@ -134,7 +144,7 @@ public class FitnessTracker {
                     System.out.println("You've chosen View your favourite exercises");
                     Exercise.displayFavExercises(favoriteExercises);
                     validOption = true;
-                    break OUTER;
+                    continue OUTER;
                 case 4:
                     System.out.println("This program will be terminated. Thank you!");
                     validOption = true;
