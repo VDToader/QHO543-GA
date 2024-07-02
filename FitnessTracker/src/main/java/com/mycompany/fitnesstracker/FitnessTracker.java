@@ -127,7 +127,7 @@ public class FitnessTracker {
                                 addExerciseToWorkout(workout, scanner);    
                                 
                                 }
-
+                                continue SMALLINNER;
                             case 3:
                                 workout.displayWorkout();
                                 continue SMALLINNER;
