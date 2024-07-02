@@ -53,6 +53,7 @@ public class FitnessTracker {
                     Exercise.displayAllExercises(exercises);
 
                     // Check if the user wants to add an exercise to his favourite exercises list.
+<<<<<<< Updated upstream
                     System.out.println("Would you like to add one of the previous exercises to your favourite list? (yes or no)");
                     // Input error catcher, in case the user inserts another word rather than yes or no
                     try {
@@ -96,6 +97,15 @@ public class FitnessTracker {
                         continue OUTER;
                     }
 
+=======
+                    System.out.println("Would you like to add one of the previous exercises to your favourite list? (Yes or No)");
+                    validOption = true;
+                    
+                    
+                    
+                    // Add an exercise to the favourite list
+                    break OUTER;
+>>>>>>> Stashed changes
                 case 2:
                     System.out.println("You've chosen Record a workout session");
                     Scanner scanner = new Scanner(System.in);
